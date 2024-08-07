@@ -1,0 +1,19 @@
+.bordered {
+    border: 1px solid #cccccc;
+}
+
+.errorMessage {
+    display: none;
+    color: indianred;
+}
+
+.nodeLine {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.head {
+    background-color: aliceblue;
+    padding: 20px 20px;
+    margin-bottom: 20px;
+}

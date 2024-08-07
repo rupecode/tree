@@ -1,0 +1,20 @@
+{
+  "name": "rp/tree",
+  "type": "project",
+  "description": "Tree app.",
+  "keywords": ["php", "jquery"],
+  "license": "MIT",
+  "require": {
+    "php": "^8.3",
+    "php-di/php-di": "^7.0",
+    "league/plates": "^3.5",
+    "byjg/migration-cli": "^4.9",
+    "aura/sql": "^5.0",
+    "bluem/tree": "^3.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}

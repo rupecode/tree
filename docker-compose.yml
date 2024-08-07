@@ -6,6 +6,9 @@ networks:
 
 services:
   app:
+    environment:
+      MIGRATE_CONNECTION: "mysql://homestead:secret@mysql/homestead"
+      MIGRATE_PATH: "/var/www/html/migrations"
     build:
       context: ./dockerfiles
       dockerfile: nginx.dockerfile
@@ -51,6 +54,24 @@ services:
       - "9000:9000"
     volumes:
       - ./src:/var/www/html:delegated
+    networks:
+      - laravel
+
+  migrate:
+    environment:
+      MIGRATE_CONNECTION: "mysql://homestead:secret@mysql/homestead"
+      MIGRATE_PATH: "/var/www/html/migrations"
+    build:
+      context: ./dockerfiles
+      dockerfile: php.root.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - php
+    entrypoint: [ '/var/www/html/vendor/bin/migrate' ]
     networks:
       - laravel
 
